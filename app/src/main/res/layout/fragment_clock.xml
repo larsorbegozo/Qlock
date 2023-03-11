@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ClockFragment">
+
+    <TextClock
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:format24Hour="EEEE, dd-MMMM"
+        android:format12Hour="EEEE, dd-MMMM"
+        app:layout_constraintBottom_toTopOf="@id/clock"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Fri, 10-Mar"/>
+
+    <TextClock
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/hour_fontSize"
+        android:format24Hour="hh:mm"
+        android:format12Hour="hh:mm"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="12:32"/>
+
+    <TextClock
+        android:id="@+id/clock_seconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textAlignment="center"
+        android:textSize="@dimen/seconds_fontSize"
+        android:format24Hour="ss"
+        android:format12Hour="ss"
+        app:layout_constraintBaseline_toBaselineOf="@id/clock"
+        app:layout_constraintLeft_toRightOf="@id/clock"
+        tools:text="23"/>
+
+    <TextClock
+        android:id="@+id/clock_AM_PM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textAlignment="center"
+        android:textSize="@dimen/clock_AM_PM_fontSize"
+        android:format24Hour=""
+        android:format12Hour="a"
+        app:layout_constraintTop_toTopOf="@id/clock"
+        app:layout_constraintBottom_toTopOf="@id/clock_seconds"
+        app:layout_constraintLeft_toLeftOf="@id/clock_seconds"
+        app:layout_constraintRight_toRightOf="@id/clock_seconds"
+        tools:text="AM"/>
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/settings_icon"
+        android:backgroundTint="@color/purple_500"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
