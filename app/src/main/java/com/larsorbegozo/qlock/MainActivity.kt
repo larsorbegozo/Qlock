@@ -1,31 +1,31 @@
 package com.larsorbegozo.qlock
 
 import android.content.Context
-import android.content.DialogInterface
-import android.content.pm.PackageManager
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.view.Gravity
 import android.view.View
 import android.widget.ToggleButton
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.larsorbegozo.qlock.databinding.ActivityMainBinding
+import com.larsorbegozo.qlock.ui.ClockFragment
 import com.larsorbegozo.qlock.ui.SettingsFragment
+import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
+    private lateinit var viewModel: ClockViewModel
 
     private var toggleFlashLightOnOff: ToggleButton? = null
     private var cameraManager: CameraManager? = null
@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this@MainActivity)[ClockViewModel::class.java]
+
+        checkThemeMode()
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -57,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     is SettingsFragment -> {
                         binding.flashlightButton.visibility = View.GONE
                     }
-                    else -> {
+                    is ClockFragment -> {
                         binding.flashlightButton.visibility = View.VISIBLE
                     }
                 }
@@ -89,6 +93,22 @@ class MainActivity : AppCompatActivity() {
             cameraManager!!.setTorchMode(getCameraID!!, false)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
+        }
+    }
+
+    private fun checkThemeMode() {
+        binding.apply {
+            viewModel.getTheme.observe(this@MainActivity) { isDarkMode ->
+                when(isDarkMode) {
+                    true -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                    false -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+                    }
+                }
+            }
         }
     }
 }
