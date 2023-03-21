@@ -10,14 +10,10 @@ import android.view.View
 import android.widget.ToggleButton
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.larsorbegozo.qlock.databinding.ActivityMainBinding
-import com.larsorbegozo.qlock.ui.ClockFragment
-import com.larsorbegozo.qlock.ui.SettingsFragment
 import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -54,19 +50,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
-
-        supportFragmentManager.registerFragmentLifecycleCallbacks(object : FragmentManager.FragmentLifecycleCallbacks() {
-            override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
-                when (f) {
-                    is SettingsFragment -> {
-                        binding.flashlightButton.visibility = View.GONE
-                    }
-                    is ClockFragment -> {
-                        binding.flashlightButton.visibility = View.VISIBLE
-                    }
-                }
-            }
-        }, true)
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

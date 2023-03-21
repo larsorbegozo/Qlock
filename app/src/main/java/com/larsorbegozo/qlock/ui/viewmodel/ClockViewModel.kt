@@ -16,7 +16,8 @@ class ClockViewModel(application: Application) : AndroidViewModel(application) {
 
     val getSelectedItem = dataStore.getSelectedItem().asLiveData(Dispatchers.IO)
 
-    var getSelectedItemIndex: Int = 0
+    var getSelectedThemeIndex: Int = 0
+
 
     fun setTheme(isDarkMode: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -24,7 +25,7 @@ class ClockViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun setSelectedItem(value: Int) {
+    fun setSelectedTheme(value: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStore.setSelectedItem(value)
         }
