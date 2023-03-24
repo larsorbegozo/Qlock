@@ -1,6 +1,7 @@
 package com.larsorbegozo.qlock.ui
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.larsorbegozo.qlock.data.DataStoreManager
 import com.larsorbegozo.qlock.databinding.FragmentClockBinding
 import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
 
 
 class ClockFragment : Fragment() {
@@ -57,6 +65,12 @@ class ClockFragment : Fragment() {
                 }
                 .show()
         }
+
+        binding.apply {
+            val skeleton = DateFormat.getBestDateTimePattern(Locale.getDefault(), "EEEE, MMMM d, yyyy")
+            dayDate.format12Hour = skeleton.format(Calendar.DATE)
+            dayDate.format24Hour = skeleton.format(Calendar.DATE)
+        }
     }
 
     private fun updateSelectedItemIndex() {
@@ -70,6 +84,4 @@ class ClockFragment : Fragment() {
     private fun changeSelectedTheme(value: Int) {
         viewModel.setSelectedTheme(value)
     }
-
-    // TODO: Clock format doesn't change when go 12hour to 24hour and vice-versa, until the app is restarted
 }
