@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Qlock</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_theme_title">Choose a theme</string>
+    <string name="confirm_change_theme">Confirm</string>
+    <string name="cancel_change_theme">Cancel</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+    <string-array name="themes">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+    </string-array>
 </resources>

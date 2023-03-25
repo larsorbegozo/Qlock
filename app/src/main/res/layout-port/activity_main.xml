@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Theme.Qlock"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -24,9 +25,8 @@
         android:id="@+id/flashlight_button"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        android:backgroundTint="@color/purple_500"
+        style="@style/button_flashlight"
         android:layout_marginBottom="@dimen/flashlightButtonMarginBottom"
-        android:textColor="@color/white"
         android:checked="false"
         android:textSize="20sp"
         android:onClick="toggleFlashLight"

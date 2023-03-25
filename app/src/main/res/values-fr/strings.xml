@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Sélectionnez un thème</string>
+    <string name="confirm_change_theme">Confirmer</string>
+    <string name="cancel_change_theme">Annuler</string>
+    <string name="dark">Sombre</string>
+    <string name="light">Clair</string>
+</resources>

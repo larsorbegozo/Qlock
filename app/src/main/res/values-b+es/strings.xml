@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Escoge un tema</string>
+    <string name="confirm_change_theme">Confirmar</string>
+    <string name="cancel_change_theme">Cancelar</string>
+    <string name="dark">Oscuro</string>
+    <string name="light">Claro</string>
+    <string-array name="themes">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+    </string-array>
+</resources>

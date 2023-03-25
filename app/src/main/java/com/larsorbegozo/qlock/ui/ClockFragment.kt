@@ -6,18 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.larsorbegozo.qlock.R
 import com.larsorbegozo.qlock.data.DataStoreManager
 import com.larsorbegozo.qlock.databinding.FragmentClockBinding
 import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.*
 
 
@@ -28,8 +22,6 @@ class ClockFragment : Fragment() {
 
     private lateinit var viewModel: ClockViewModel
     private lateinit var dataStoreManager: DataStoreManager
-
-    private val arrayThemes = arrayOf("Light", "Dark", "Schizophrenia") // TODO: Add more themes and create them
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,23 +37,27 @@ class ClockFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val light: String = getString(R.string.light)
+        val dark: String = getString(R.string.dark)
+
+        val arrayThemes = arrayOf(light, dark)
+
         updateSelectedItemIndex() // Called here to initialize viewModel.getSelectedItemIndex, if it won't be initialized, it will select incorrect item at first
         binding.themeButton.setOnClickListener {
-            val builder = MaterialAlertDialogBuilder(requireContext())
+            val builder = MaterialAlertDialogBuilder(requireContext(), R.style.dialogDeLosCojones)
             builder
-                .setTitle("Choose Theme")
+                .setTitle(R.string.change_theme_title   )
                 .setSingleChoiceItems(arrayThemes, viewModel.getSelectedThemeIndex) { _, i ->
                     changeSelectedTheme(i)
                 }
-                .setPositiveButton("OK") { _, _ ->
-                    if(arrayThemes[viewModel.getSelectedThemeIndex] == "Dark") { // TODO: Add configuration for more themes
+                .setPositiveButton(R.string.confirm_change_theme) { _, _ ->
+                    if(arrayThemes[viewModel.getSelectedThemeIndex] == dark) {
                         viewModel.setTheme(true)
                     } else {
                         viewModel.setTheme(false)
                     }
                 }
-                .setNegativeButton("NO") { _, _ ->
-                    Toast.makeText(builder.context, "UARNSEW", Toast.LENGTH_SHORT).show()
+                .setNegativeButton(R.string.cancel_change_theme) { _, _ ->
                 }
                 .show()
         }

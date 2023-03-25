@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="hour_fontSize">150sp</dimen>
+    <dimen name="hour_fontSize">170sp</dimen>
     <dimen name="seconds_fontSize">25sp</dimen>
     <dimen name="clock_AM_PM_fontSize">25sp</dimen>
     <dimen name="flashlightButtonMarginBottom">15dp</dimen>
