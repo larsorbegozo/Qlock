@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.larsorbegozo.qlock.R
 import com.larsorbegozo.qlock.data.DataStoreManager
@@ -31,6 +32,7 @@ class ClockFragment : Fragment() {
         viewModel = ViewModelProvider(this@ClockFragment)[ClockViewModel::class.java]
         dataStoreManager = DataStoreManager(requireContext().applicationContext)
         _binding = FragmentClockBinding.inflate(layoutInflater, container, false)
+        initLoadAds()
         return binding.root
     }
 
@@ -46,7 +48,7 @@ class ClockFragment : Fragment() {
         binding.themeButton.setOnClickListener {
             val builder = MaterialAlertDialogBuilder(requireContext(), R.style.dialogDeLosCojones)
             builder
-                .setTitle(R.string.change_theme_title   )
+                .setTitle(R.string.change_theme_title)
                 .setSingleChoiceItems(arrayThemes, viewModel.getSelectedThemeIndex) { _, i ->
                     changeSelectedTheme(i)
                 }
@@ -79,5 +81,12 @@ class ClockFragment : Fragment() {
 
     private fun changeSelectedTheme(value: Int) {
         viewModel.setSelectedTheme(value)
+    }
+
+    private fun initLoadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adBanner.loadAd(adRequest)
+
+        // TODO: Add overridable functions
     }
 }

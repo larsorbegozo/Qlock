@@ -7,15 +7,18 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.ToggleButton
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.larsorbegozo.qlock.databinding.ActivityMainBinding
 import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
-        val screenSplash = installSplashScreen()
 
         super.onCreate(savedInstanceState)
 
@@ -40,9 +42,21 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this@MainActivity)[ClockViewModel::class.java]
 
-        screenSplash.setKeepOnScreenCondition { false }
-
         checkThemeMode()
+
+/*        val content: View = findViewById(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener(
+            object: ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    return if(viewModel.isReady) {
+                        content.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else {
+                        false
+                    }
+                }
+            }
+        )*/
 
         // Hide the status bar.
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -118,7 +132,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     false -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
                     }
                 }
             }

@@ -5,8 +5,12 @@
     <string name="cancel_change_theme">Cancel</string>
     <string name="dark">Dark</string>
     <string name="light">Light</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
     <string-array name="themes">
         <item>@string/light</item>
         <item>@string/dark</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

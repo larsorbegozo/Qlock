@@ -53,9 +53,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 
     // Lifecycle
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0'
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
@@ -70,4 +70,7 @@ dependencies {
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Admob
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
 }

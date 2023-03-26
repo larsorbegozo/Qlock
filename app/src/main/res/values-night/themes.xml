@@ -12,12 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:background">@color/black</item>
     </style>
     
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/teal_200</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/settings_icon</item>
+        <item name="windowSplashScreenBackground">#3C3C3C</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/arrow_back</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Theme.Qlock</item>
     </style>
