@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Aukeratu gai bat</string>
+    <string name="confirm_change_theme">Berretsi</string>
+    <string name="cancel_change_theme">Utzi</string>
+    <string name="dark">Iluna</string>
+    <string name="light">Argia</string>
+</resources>

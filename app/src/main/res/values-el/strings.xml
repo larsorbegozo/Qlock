@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Επιλέξτε ένα θέμα</string>
+    <string name="confirm_change_theme">Επιβεβαιώνω</string>
+    <string name="cancel_change_theme">Ματαίωση</string>
+    <string name="dark">Σκοτεινό</string>
+    <string name="light">Ελαφρύ</string>
+</resources>

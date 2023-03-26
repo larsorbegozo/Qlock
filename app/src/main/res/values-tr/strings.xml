@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Bir tema seç</string>
+    <string name="confirm_change_theme">Onaylamak</string>
+    <string name="cancel_change_theme">İptal etmek</string>
+    <string name="dark">Koyu</string>
+    <string name="light">Açık</string>
+</resources>

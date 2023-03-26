@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">选择一个主题</string>
+    <string name="confirm_change_theme">确认</string>
+    <string name="cancel_change_theme">取消</string>
+    <string name="dark">深色主题</string>
+    <string name="light">浅色主题</string>
+</resources>

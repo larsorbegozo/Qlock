@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">Alegeți o temă</string>
+    <string name="confirm_change_theme">A confirma</string>
+    <string name="cancel_change_theme">Anulare</string>
+    <string name="dark">Întunecată</string>
+    <string name="light">Ușoară</string>
+</resources>

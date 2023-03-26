@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390721485337",
+    "project_id": "larsorbegozo-qlock",
+    "storage_bucket": "larsorbegozo-qlock.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390721485337:android:a5e89486ed69b0e0894888",
+        "android_client_info": {
+          "package_name": "com.larsorbegozo.qlock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390721485337-2meo8ques540s9ojglsdgb5bfi33c4k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5S0MJBOO932W3LvLcuK586ik3HP14YaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390721485337-2meo8ques540s9ojglsdgb5bfi33c4k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

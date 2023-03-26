@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qlock</string>
+    <string name="change_theme_title">テーマを選択</string>
+    <string name="confirm_change_theme">確認</string>
+    <string name="cancel_change_theme">キャンセル</string>
+    <string name="dark">暗い</string>
+    <string name="light">ライト</string>
+</resources>
