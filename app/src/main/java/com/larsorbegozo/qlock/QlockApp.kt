@@ -6,7 +6,6 @@ import com.google.android.gms.ads.MobileAds
 class QlockApp: Application() {
     override fun onCreate() {
         super.onCreate()
-
         MobileAds.initialize(this)
     }
 }

@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.larsorbegozo.qlock"
-        minSdk 26
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -72,5 +72,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Admob
-    implementation 'com.google.android.gms:play-services-ads:21.5.0'
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+
+    // Android-Animated-Theme-Manager by imandolatkia
+    // https://github.com/imandolatkia/Android-Animated-Theme-Manager
+    implementation "com.dolatkia:animated-theme-manager:1.1.4"
 }

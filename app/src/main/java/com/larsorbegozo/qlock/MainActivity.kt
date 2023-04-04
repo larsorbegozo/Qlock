@@ -1,73 +1,62 @@
 package com.larsorbegozo.qlock
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.ViewTreeObserver
+import android.text.format.DateFormat
+import android.view.*
 import android.widget.ToggleButton
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import com.dolatkia.animatedThemeManager.AppTheme
+import com.dolatkia.animatedThemeManager.ThemeActivity
+import com.dolatkia.animatedThemeManager.ThemeManager
+import com.google.android.gms.ads.AdRequest
 import com.larsorbegozo.qlock.databinding.ActivityMainBinding
-import com.larsorbegozo.qlock.ui.viewmodel.ClockViewModel
-import kotlinx.coroutines.*
+import com.larsorbegozo.qlock.ui.LightTheme
+import com.larsorbegozo.qlock.ui.NightTheme
+import com.larsorbegozo.qlock.ui.QlockTheme
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : ThemeActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
 
-    private lateinit var viewModel: ClockViewModel
-
+    private var isNight = true
     private var toggleFlashLightOnOff: ToggleButton? = null
     private var cameraManager: CameraManager? = null
     private var getCameraID: String? = null
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this@MainActivity)[ClockViewModel::class.java]
+        // Status Bar hidden
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        checkThemeMode()
+        // Initialize Ads
+        initLoadAds()
 
-/*        val content: View = findViewById(android.R.id.content)
-        content.viewTreeObserver.addOnPreDrawListener(
-            object: ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    return if(viewModel.isReady) {
-                        content.viewTreeObserver.removeOnPreDrawListener(this)
-                        true
-                    } else {
-                        false
-                    }
-                }
+        // Change theme button
+        binding.cardViewSetTheme.setOnClickListener {
+            isNight = if(isNight) {
+                ThemeManager.instance.changeTheme(LightTheme(), it)
+                false
+            } else {
+                ThemeManager.instance.changeTheme(NightTheme(), it)
+                true
             }
-        )*/
+        }
 
-        // Hide the status bar.
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        actionBar?.hide()
+        // Formatting date
+        binding.apply {
+            val skeleton = DateFormat.getBestDateTimePattern(Locale.getDefault(), "EEEE, MMMM d, yyyy")
+            dayDate.format12Hour = skeleton.format(Calendar.DATE)
+            dayDate.format24Hour = skeleton.format(Calendar.DATE)
+        }
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-
+        // Flashlight
         toggleFlashLightOnOff = findViewById(R.id.flashlight_button)
 
         cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
@@ -78,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     fun toggleFlashLight(view: View?) {
         if(toggleFlashLightOnOff!!.isChecked) {
             try {
@@ -95,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     override fun finish() {
         super.finish()
         try {
@@ -105,36 +92,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Hide the status bar.
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        actionBar?.hide()
+    // Set light/night theme
+    override fun syncTheme(appTheme: AppTheme) {
+        val qlockTheme = appTheme as QlockTheme
+
+        binding.root.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.cardViewSetTheme.backgroundTintList = ColorStateList.valueOf(qlockTheme.mainActivityButtonColor(this))
+        binding.themeIcon.setColorFilter(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.cardViewFlashlight.backgroundTintList = ColorStateList.valueOf(qlockTheme.mainActivityButtonColor(this))
+        binding.flashlightButton.setTextColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.logoQlock.setColorFilter(qlockTheme.mainActivityLogoColor(this))
+        binding.logoQlock.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.dayDate.setTextColor(qlockTheme.mainActivityTextColor(this))
+        binding.dayDate.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.clockSeconds.setTextColor(qlockTheme.mainActivityTextColor(this))
+        binding.clockSeconds.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.clockAMPM.setTextColor(qlockTheme.mainActivityTextColor(this))
+        binding.clockAMPM.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        binding.clock.setTextColor(qlockTheme.mainActivityTextColor(this))
+        binding.clock.setBackgroundColor(qlockTheme.mainActivityBackgroundColor(this))
+
+        syncStatusBarIconColors(qlockTheme)
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        // Hide the status bar.
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        actionBar?.hide()
+    override fun getStartTheme(): AppTheme {
+        return NightTheme()
     }
 
-    private fun checkThemeMode() {
-        binding.apply {
-            viewModel.getTheme.observe(this@MainActivity) { isDarkMode ->
-                when(isDarkMode) {
-                    true -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    }
-                    false -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    }
-                }
-            }
-        }
+    private fun initLoadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adBanner.loadAd(adRequest)
+    }
+
+    private fun syncStatusBarIconColors(theme: QlockTheme) {
+        ThemeManager.instance.syncStatusBarIconsColorWithBackground(
+            this,
+            theme.mainActivityBackgroundColor(this)
+        )
+        ThemeManager.instance.syncNavigationBarButtonsColorWithBackground(
+            this,
+            theme.mainActivityBackgroundColor(this)
+        )
     }
 }

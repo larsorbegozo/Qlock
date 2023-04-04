@@ -33,7 +33,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="dialogDeLosCojones" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <style name="Select_Theme_Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:background">#1E1E1E</item>
     </style>
 
