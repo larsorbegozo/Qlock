@@ -112,7 +112,10 @@
         app:layout_constraintRight_toRightOf="parent"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
-    <!-- !PLACEHOLDER -->
+
+    <!-- !TESTING: ads:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
+
+    <!-- !REAL ONE: ads:adUnitId="ca-app-pub-9797762024776151/9596480304"-->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view_flashlight"

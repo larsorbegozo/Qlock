@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.larsorbegozo.qlock">
 
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -26,7 +28,10 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
-        <!--! THIS IS A PLACEHOLDER FOR TESTING-->
+
+        <!--! TESTING: android:value="ca-app-pub-3940256099942544~3347511713"-->
+
+        <!--! REAL ONE: android:value="ca-app-pub-9797762024776151~7515706909"-->
     </application>
 
 </manifest>
