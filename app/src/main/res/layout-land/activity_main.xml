@@ -130,18 +130,24 @@
         app:cardElevation="3dp"
         tools:ignore="ContentDescription">
 
-        <ToggleButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/flashlight_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
-            android:textColor="@color/white"
+            android:checkable="true"
             android:checked="false"
             android:textSize="20sp"
-            android:onClick="toggleFlashLight"
-            android:textOn="@string/on"
-            android:textOff="@string/off"
+            app:icon="@drawable/flashlight_icon"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:iconPadding="0dp"
+            app:iconSize="36dp"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
             tools:ignore="ContentDescription" />
 
     </com.google.android.material.card.MaterialCardView>
