@@ -4,17 +4,14 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
-import android.os.Build
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.*
 import android.widget.Toast
-import android.widget.ToggleButton
 import com.dolatkia.animatedThemeManager.AppTheme
 import com.dolatkia.animatedThemeManager.ThemeActivity
 import com.dolatkia.animatedThemeManager.ThemeManager
 import com.google.android.gms.ads.AdRequest
-import com.google.android.material.button.MaterialButton
 import com.larsorbegozo.qlock.databinding.ActivityMainBinding
 import com.larsorbegozo.qlock.ui.LightTheme
 import com.larsorbegozo.qlock.ui.NightTheme
@@ -85,7 +82,7 @@ class MainActivity : ThemeActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "Sorry", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.flashlight_emulator_error), Toast.LENGTH_LONG).show()
         }
     }
 

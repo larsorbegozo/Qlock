@@ -15,13 +15,6 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:background">@color/black</item>
     </style>
-    
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#3C3C3C</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/arrow_back</item>
-        <item name="windowSplashScreenAnimationDuration">300</item>
-        <item name="postSplashScreenTheme">@style/Theme.Qlock</item>
-    </style>
 
     <style name="button_theme">
         <item name="android:backgroundTint">@color/white</item>

@@ -7,6 +7,7 @@
     <string name="light">Light</string>
     <string name="on" translatable="false">ON</string>
     <string name="off" translatable="false">OFF</string>
+    <string name="flashlight_emulator_error">Sorry, your device does not support the function of this button.</string>
     <string-array name="themes">
         <item>@string/light</item>
         <item>@string/dark</item>

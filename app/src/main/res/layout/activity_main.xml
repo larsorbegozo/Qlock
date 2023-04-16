@@ -21,17 +21,18 @@
 
     <TextClock
         android:id="@+id/day_date"
+        style="@style/clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:format24Hour="EEEE, dd"
         android:format12Hour="EEEE, dd"
-        style="@style/clock"
+        android:format24Hour="EEEE, dd"
+        android:textAlignment="center"
+        android:textSize="@dimen/seconds_fontSize"
         app:layout_constraintBottom_toTopOf="@id/clock"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:text="Miércoles, 22 de Marzo de 2023"/>
+        tools:text="Miércoles, 22 de Marzo de 2023" />
 
     <TextClock
         android:id="@+id/clock"
@@ -80,8 +81,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view_set_theme"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@android:color/black"
@@ -150,20 +151,6 @@
             app:iconGravity="textStart"
             app:iconTint="@color/white"
             tools:ignore="ContentDescription" />
-
-<!--        <ToggleButton
-            android:id="@+id/flashlight_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            android:checked="false"
-            android:textSize="20sp"
-            android:onClick="toggleFlashLight"
-            android:textOn="@string/on"
-            android:textOff="@string/off"
-            tools:ignore="ContentDescription" />-->
 
     </com.google.android.material.card.MaterialCardView>
 
